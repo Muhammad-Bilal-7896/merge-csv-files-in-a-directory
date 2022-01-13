@@ -13,5 +13,5 @@ dir_list = os.listdir(path)
 
 #Greater loop to go through each file name
 for files in dir_list:
-  #print(files)
+  print(files)
   pass

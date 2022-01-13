@@ -3,14 +3,19 @@ import numpy as np
 import os
 import pandas as pd
 # Get the list of all files and directories
+# Path Formats
 # H://sir zeeshan work//Coding files//Test
-path = "H://sir zeeshan work//Coding files//Test"
+# H://sir zeeshan work//train//0
+# H://sir zeeshan work//Coding files//Train
+# H://sir zeeshan work//val//0
+# H://sir zeeshan work//Coding files//Val
+path = "H:/sir zeeshan work/Coding files/Val"
 dir_list = os.listdir(path)
 
 #print("Files and directories in '", path, "' :")
 
 # Length of directory
-print(len(dir_list))
+print("Length of files in the given path directory is : "+ str(len(dir_list)))
 length = len(dir_list)
 
 
@@ -25,7 +30,10 @@ Greater_Product = []
 # We are inside the loop.Get ready the loop is going to start
 for files in dir_list:
     # print(files)
-    data = pd.read_csv('H:/sir zeeshan work/Coding files/Test/' +
+    # Path Format: H:/sir zeeshan work/train/0/
+    # H:/sir zeeshan work/val/0/
+    # H:/sir zeeshan work/Coding files/Val/
+    data = pd.read_csv('H:/sir zeeshan work/Coding files/Val/' +
                        str(files))
     # print(files)
 
@@ -81,11 +89,11 @@ print('Length of product Array is :', len(Greater_Product_Combined))
 
 
 # Printing finally as arrays
-print('Length of longitude Array is : ', type(Greater_Longitude_Combined))
-print('Length of latitude Array is : ', len(Greater_Latitude_Combined))
-print('Length of date Array is :', len(Greater_Date_Combined))
-print('Length of NDVI Array is :', len(Greater_NDVI_Combined))
-print('Length of product Array is :', Greater_Product_Combined)
+print('longitude Array is : ', Greater_Longitude_Combined)
+print('latitude Array is : ', Greater_Latitude_Combined)
+print('date Array is :', Greater_Date_Combined)
+print('NDVI Array is :', Greater_NDVI_Combined)
+print('product Array is :', Greater_Product_Combined)
 
 ####################Writing data finally to csv file
 df = pd.DataFrame(
@@ -97,4 +105,4 @@ df = pd.DataFrame(
         "product": Greater_Product_Combined
     }
 )
-df.to_csv("Test All 6 Combined.csv", index=False)
+df.to_csv("Val Final All Combined.csv", index=False)
