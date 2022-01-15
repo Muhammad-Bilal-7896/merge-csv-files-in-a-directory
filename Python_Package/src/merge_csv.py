@@ -1,5 +1,5 @@
 #Converting to package
-def merge_csv(path_1,path_1_second_form):
+def merge_csv(path_1="H://",path_1_second_form="H:/"):
     # All files and directories ending with .txt and that don't begin with a dot:
     import numpy as np
     import os
