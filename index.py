@@ -1,5 +1,5 @@
 #Converting to package
-def merge_csv(path_1,path_1_second_form):
+def merge_csv(path_):
     # All files and directories ending with .txt and that don't begin with a dot:
     import numpy as np
     import os
@@ -11,7 +11,7 @@ def merge_csv(path_1,path_1_second_form):
     # H://sir zeeshan work//Coding files//Train
     # H://sir zeeshan work//val//0
     # H://sir zeeshan work//Coding files//Val
-    path = path_1
+    path = path_
     dir_list = os.listdir(path)
 
     #print("Files and directories in '", path, "' :")
@@ -34,9 +34,9 @@ def merge_csv(path_1,path_1_second_form):
         # Path Format: H:/sir zeeshan work/train/0/
         # H:/sir zeeshan work/val/0/
         # H:/sir zeeshan work/Coding files/Val/
-        data = pd.read_csv(path_1_second_form +
+        data = pd.read_csv(path_ +
                            str(files))
-        # print(files)
+        print(files)
 
         longitude = data['longitude'].tolist()
         latitude = data['latitude'].tolist()
@@ -105,12 +105,11 @@ def merge_csv(path_1,path_1_second_form):
             "product": Greater_Product_Combined
         }
     )
-    df.to_csv("Test 0.csv", index=False)
+    df.to_csv("Combined.csv", index=False)
     return
 
 def main():
-    path_1 = "H://sir zeeshan work data science//test//0"
-    path_1_second_form = 'H:/sir zeeshan work data science/test/0/'
-    merge_csv(path_1,path_1_second_form)
+    path = 'H:/sir zeeshan work data science/test/0/'
+    merge_csv(path)
 
 main()

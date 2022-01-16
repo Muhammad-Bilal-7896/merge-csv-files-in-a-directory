@@ -1,5 +1,4 @@
-#Converting to package
-def merge_csv(path_1="H://",path_1_second_form="H:/"):
+def merge_all_csv_in_directory(path_1="C://",path_1_second_form="C:/"):
     # All files and directories ending with .txt and that don't begin with a dot:
     import numpy as np
     import os
@@ -107,10 +106,3 @@ def merge_csv(path_1="H://",path_1_second_form="H:/"):
     )
     df.to_csv("Test 0.csv", index=False)
     return
-
-def main():
-    path_1 = "H://sir zeeshan work data science//test//0"
-    path_1_second_form = 'H:/sir zeeshan work data science/test/0/'
-    merge_csv(path_1,path_1_second_form)
-
-main()
