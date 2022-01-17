@@ -1,4 +1,4 @@
-def merge_all_csv_in_directory(path_1="C://",path_1_second_form="C:/"):
+def merge_all_csv_in_directory(path_="C:/"):
     # All files and directories ending with .txt and that don't begin with a dot:
     import numpy as np
     import os
@@ -10,7 +10,7 @@ def merge_all_csv_in_directory(path_1="C://",path_1_second_form="C:/"):
     # H://sir zeeshan work//Coding files//Train
     # H://sir zeeshan work//val//0
     # H://sir zeeshan work//Coding files//Val
-    path = path_1
+    path = path_
     dir_list = os.listdir(path)
 
     #print("Files and directories in '", path, "' :")
@@ -33,7 +33,7 @@ def merge_all_csv_in_directory(path_1="C://",path_1_second_form="C:/"):
         # Path Format: H:/sir zeeshan work/train/0/
         # H:/sir zeeshan work/val/0/
         # H:/sir zeeshan work/Coding files/Val/
-        data = pd.read_csv(path_1_second_form +
+        data = pd.read_csv(path_ +
                            str(files))
         # print(files)
 
