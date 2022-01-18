@@ -13,10 +13,11 @@ def merge_all_csv_in_directory(path_="C:/"):
     path = path_
     dir_list = os.listdir(path)
 
-    #print("Files and directories in '", path, "' :")
+    # print("Files and directories in '", path, "' :")
 
     # Length of directory
     print("Length of files in the given path directory is : " + str(len(dir_list)))
+
     length = len(dir_list)
 
     # Greater loop to go through each file name
@@ -35,13 +36,18 @@ def merge_all_csv_in_directory(path_="C:/"):
         # H:/sir zeeshan work/Coding files/Val/
         data = pd.read_csv(path_ +
                            str(files))
+
+        columns = list(data.head(0))
+
+        print("The column names are : ",columns)
+                        
         # print(files)
 
-        longitude = data['longitude'].tolist()
-        latitude = data['latitude'].tolist()
-        date = data['date'].tolist()
-        NDVI = data['NDVI'].tolist()
-        product = data['product'].tolist()
+        longitude = data[columns[0]].tolist()
+        latitude = data[columns[1]].tolist()
+        date = data[columns[2]].tolist()
+        NDVI = data[columns[3]].tolist()
+        product = data[columns[4]].tolist()
         #########################APPENDING THE DATA#######################################
         Greater_Longitude.append(longitude)
         Greater_Latitude.append(latitude)
@@ -50,7 +56,7 @@ def merge_all_csv_in_directory(path_="C:/"):
         Greater_Product.append(product)
 
         # Printing the count to know at which length the memory leak is occuring
-        #print("Count =====================> ",count)
+        # print("Count =====================> ",count)
 
         # Breaking the loop to avoid memory leak when the files length available in the folder or directory are reached.Discovered to avoid memory leak
         count = count + 1
@@ -106,3 +112,9 @@ def merge_all_csv_in_directory(path_="C:/"):
     )
     df.to_csv("Test 0.csv", index=False)
     return
+
+def main():
+    path = 'H:/sir zeeshan work data science/test/0/'
+    merge_all_csv_in_directory(path)
+
+main()
