@@ -44,8 +44,9 @@ def merge_all_csv_in_directory(path_="C:/"):
     #Pushing empty arrays
     for col_names in TempColumns:
         print(col_names)
+        Global_Array_Of_Data.append({ col_names: [] })
   
-    Global_Array_Of_Data.append({ "Longitude": [] })
+    print(Global_Array_Of_Data)
 
     #Will be tested later
     # We are inside the loop.Get ready the loop is going to start
