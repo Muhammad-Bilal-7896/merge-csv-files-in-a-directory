@@ -23,11 +23,11 @@ def merge_all_csv_in_directory(path_="C:/"):
     # Greater loop to go through each file name
     count = 0
     #Lets make its creation dynamic
-    Greater_Longitude = []
-    Greater_Latitude = []
-    Greater_Date = []
-    Greater_NDVI = []
-    Greater_Product = []
+    # Greater_Longitude = []
+    # Greater_Latitude = []
+    # Greater_Date = []
+    # Greater_NDVI = []
+    # Greater_Product = []
     #Lets make its creation dynamic
 
     TempCheck = pd.read_csv(path_ +
@@ -37,14 +37,14 @@ def merge_all_csv_in_directory(path_="C:/"):
 
     length_of_csv_headers = len(TempColumns)
 
-    print("Reading csv we got ==> ",length_of_csv_headers)
+    #print("Reading csv we got ==> ",length_of_csv_headers)
 
     Global_Array_Of_Data = []
 
     #Pushing empty arrays
-    for col_names in TempColumns:
-        print(col_names)
-        Global_Array_Of_Data.append({ col_names: [] })
+    # for col_names in TempColumns:
+    #     print(col_names)
+    #     Global_Array_Of_Data.append({ col_names: [] })
   
     print(Global_Array_Of_Data)
 
@@ -61,7 +61,8 @@ def merge_all_csv_in_directory(path_="C:/"):
         #Reading Column Names
         columns = list(data.head(0))
 
-        print("The column names are : ",columns)
+        # Focus here later
+        # print("The column names are : ",columns)
 
         # longitude = data[columns[0]].tolist()
         # latitude = data[columns[1]].tolist()
@@ -71,12 +72,18 @@ def merge_all_csv_in_directory(path_="C:/"):
 
    
 
-        t={}
+        dynamic_temp_object={}
 
+        temp_count = 0
         for cols in TempColumns:
-            t[cols]=2
+            dynamic_temp_object[cols]=data[columns[temp_count]].tolist()
+            temp_count = temp_count + 1
+            # print("Value ===> ",temp_count)
         
-        print("T is ==> ",t)
+        #print("T is ==> ",dynamic_temp_object)
+
+        #Pushing the object in global array after filling it with appropriate key and values
+        Global_Array_Of_Data.append(dynamic_temp_object)
                         
         # print(files)
 
@@ -97,7 +104,7 @@ def merge_all_csv_in_directory(path_="C:/"):
 
         # Breaking the loop to avoid memory leak when the files length available in the folder or directory are reached.Discovered to avoid memory leak
         count = count + 1
-        if(count == length-1):
+        if(count == 5):
             break
     # The loop Ended Successfully.Done
 
@@ -117,37 +124,44 @@ def merge_all_csv_in_directory(path_="C:/"):
     # product = data['product'].tolist()
 
     # Merging all arrays
-    Greater_Longitude_Combined = np.concatenate((Greater_Longitude))
-    Greater_Latitude_Combined = np.concatenate((Greater_Latitude))
-    Greater_Date_Combined = np.concatenate((Greater_Date))
-    Greater_NDVI_Combined = np.concatenate((Greater_NDVI))
-    Greater_Product_Combined = np.concatenate((Greater_Product))
+    ############################################################################
+    # temp_count = 0
+    # for cols in TempColumns:
+    #     dynamic_temp_object[cols]=data[columns[temp_count]].tolist()
+    #     temp_count = temp_count + 1
+    print("Global Array of Data is ==> ",Global_Array_Of_Data)
+    ############################################################################
+    # Greater_Longitude_Combined = np.concatenate((Greater_Longitude))
+    # Greater_Latitude_Combined = np.concatenate((Greater_Latitude))
+    # Greater_Date_Combined = np.concatenate((Greater_Date))
+    # Greater_NDVI_Combined = np.concatenate((Greater_NDVI))
+    # Greater_Product_Combined = np.concatenate((Greater_Product))
 
     # printing list data
-    print('Length of longitude Array is : ', len(Greater_Longitude_Combined))
-    print('Length of latitude Array is : ', len(Greater_Latitude_Combined))
-    print('Length of date Array is :', len(Greater_Date_Combined))
-    print('Length of NDVI Array is :', len(Greater_NDVI_Combined))
-    print('Length of product Array is :', len(Greater_Product_Combined))
+    # print('Length of longitude Array is : ', len(Greater_Longitude_Combined))
+    # print('Length of latitude Array is : ', len(Greater_Latitude_Combined))
+    # print('Length of date Array is :', len(Greater_Date_Combined))
+    # print('Length of NDVI Array is :', len(Greater_NDVI_Combined))
+    # print('Length of product Array is :', len(Greater_Product_Combined))
 
     # Printing finally as arrays
-    print('longitude Array is : ', Greater_Longitude_Combined)
-    print('latitude Array is : ', Greater_Latitude_Combined)
-    print('date Array is :', Greater_Date_Combined)
-    print('NDVI Array is :', Greater_NDVI_Combined)
-    print('product Array is :', Greater_Product_Combined)
+    # print('longitude Array is : ', Greater_Longitude_Combined)
+    # print('latitude Array is : ', Greater_Latitude_Combined)
+    # print('date Array is :', Greater_Date_Combined)
+    # print('NDVI Array is :', Greater_NDVI_Combined)
+    # print('product Array is :', Greater_Product_Combined)
 
     # Writing data finally to csv file
-    df = pd.DataFrame(
-        {
-            "longitude": Greater_Longitude_Combined,
-            "latitude": Greater_Latitude_Combined,
-            "date": Greater_Date_Combined,
-            "NDVI": Greater_NDVI_Combined,
-            "product": Greater_Product_Combined
-        }
-    )
-    df.to_csv("Test 0.csv", index=False)
+    # df = pd.DataFrame(
+    #     {
+    #         "longitude": Greater_Longitude_Combined,
+    #         "latitude": Greater_Latitude_Combined,
+    #         "date": Greater_Date_Combined,
+    #         "NDVI": Greater_NDVI_Combined,
+    #         "product": Greater_Product_Combined
+    #     }
+    # )
+    # df.to_csv("Test 0.csv", index=False)
     #Will be tested later
     return
 
