@@ -22,11 +22,13 @@ def merge_all_csv_in_directory(path_="C:/"):
 
     # Greater loop to go through each file name
     count = 0
+    #Lets make its creation dynamic
     Greater_Longitude = []
     Greater_Latitude = []
     Greater_Date = []
     Greater_NDVI = []
     Greater_Product = []
+    #Lets make its creation dynamic
 
     TempCheck = pd.read_csv(path_ +
                            str(dir_list[0]))
@@ -36,6 +38,14 @@ def merge_all_csv_in_directory(path_="C:/"):
     length_of_csv_headers = len(TempColumns)
 
     print("Reading csv we got ==> ",length_of_csv_headers)
+
+    Global_Array_Of_Data = []
+
+    #Pushing empty arrays
+    for col_names in TempColumns:
+        print(col_names)
+  
+    Global_Array_Of_Data.append({ "Longitude": [] })
 
     #Will be tested later
     # We are inside the loop.Get ready the loop is going to start
