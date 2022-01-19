@@ -1,3 +1,6 @@
+from ast import Global
+
+
 def merge_all_csv_in_directory(path_="C:/"):
     # All files and directories ending with .txt and that don't begin with a dot:
     import numpy as np
@@ -104,7 +107,7 @@ def merge_all_csv_in_directory(path_="C:/"):
 
         # Breaking the loop to avoid memory leak when the files length available in the folder or directory are reached.Discovered to avoid memory leak
         count = count + 1
-        if(count == 5):
+        if(count == 3):
             break
     # The loop Ended Successfully.Done
 
@@ -127,14 +130,43 @@ def merge_all_csv_in_directory(path_="C:/"):
     ############################################################################
     Combined_Global_Array = []
     temp_count = 0
-    for cols in TempColumns:
-        #dynamic_temp_object[cols]= np.concatenate data[columns[temp_count]].tolist()
-        print("Concatenated Arrays are ==> " + " Col No. " + temp_count " ==> " + np.concatenate(Global_Array_Of_Data[temp_count]))
-        temp_count = temp_count + 1
+    # for array_values in Global_Array_Of_Data:
+    #     #dynamic_temp_object[cols]= np.concatenate data[columns[temp_count]].tolist()
+    #     print("Concatenated Arrays are ==> " + " Col No. " + str(temp_count) + " ==> ")
+    #     print(Global_Array_Of_Data[temp_count])
+
+    #     # list out keys and values separately
+    #     key_list_Global_Array = list(Global_Array_Of_Data.keys())
+    #     val_list_Global_Array = list(Global_Array_Of_Data.values())
+
+    #     key_list_Column_Array = list(TempColumns.keys())
+    #     val_list_Column_Array = list(TempColumns.values())
+
+    #     for column_names in TempColumns:
+    #         # print key with val Current Column name
+    #         position = val_list_Column_Array.index(column_names)
+    #         print(key_list_Column_Array[position])
+    #         if()
+    #     temp_count = temp_count + 1
     #print("Global Array of Data is ==> ",Global_Array_Of_Data)
     ############################################################################
-
-    
+    ##Final merging"""@Algorithm
+    ############################################################################
+    # 
+    # 
+    for column_sheet in TempColumns:
+        temp_count_of_global_array=0
+        for global_array_data in Global_Array_Of_Data:
+            #### list out keys and values separately ####
+            key_list = list(Global_Array_Of_Data[temp_count_of_global_array].keys())
+            val_list = list(Global_Array_Of_Data[temp_count_of_global_array].values())
+            # print key with val 100
+            position = val_list.index([global_array_data])
+            #print(key_list[position])
+            temp_count_of_global_array=temp_count_of_global_array+1
+            #### list out keys and values separately ####
+            if(key_list[position]==column_sheet):
+                print(key_list[position])    
 
     # Greater_Longitude_Combined = np.concatenate((Greater_Longitude))
     # Greater_Latitude_Combined = np.concatenate((Greater_Latitude))
