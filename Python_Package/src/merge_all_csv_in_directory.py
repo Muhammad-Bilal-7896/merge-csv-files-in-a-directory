@@ -161,7 +161,7 @@ def merge_all_csv_in_directory(path_="C:/"):
             key_list = list(Global_Array_Of_Data[temp_count_of_global_array].keys())
             val_list = list(Global_Array_Of_Data[temp_count_of_global_array].values())
             # print key with val 100
-            position = val_list.index([global_array_data])
+            position = key_list.index(column_sheet)
             #print(key_list[position])
             temp_count_of_global_array=temp_count_of_global_array+1
             #### list out keys and values separately ####
