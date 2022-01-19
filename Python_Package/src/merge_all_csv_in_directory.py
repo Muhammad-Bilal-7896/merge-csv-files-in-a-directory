@@ -125,12 +125,17 @@ def merge_all_csv_in_directory(path_="C:/"):
 
     # Merging all arrays
     ############################################################################
-    # temp_count = 0
-    # for cols in TempColumns:
-    #     dynamic_temp_object[cols]=data[columns[temp_count]].tolist()
-    #     temp_count = temp_count + 1
-    print("Global Array of Data is ==> ",Global_Array_Of_Data)
+    Combined_Global_Array = []
+    temp_count = 0
+    for cols in TempColumns:
+        #dynamic_temp_object[cols]= np.concatenate data[columns[temp_count]].tolist()
+        print("Concatenated Arrays are ==> " + " Col No. " + temp_count " ==> " + np.concatenate(Global_Array_Of_Data[temp_count]))
+        temp_count = temp_count + 1
+    #print("Global Array of Data is ==> ",Global_Array_Of_Data)
     ############################################################################
+
+    
+
     # Greater_Longitude_Combined = np.concatenate((Greater_Longitude))
     # Greater_Latitude_Combined = np.concatenate((Greater_Latitude))
     # Greater_Date_Combined = np.concatenate((Greater_Date))
