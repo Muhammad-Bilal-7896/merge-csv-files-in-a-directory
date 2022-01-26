@@ -1,4 +1,5 @@
 from ast import Global
+from turtle import pos
 
 
 def merge_all_csv_in_directory(path_="C:/"):
@@ -156,23 +157,41 @@ def merge_all_csv_in_directory(path_="C:/"):
     # 
     for column_sheet in TempColumns:
         temp_count_of_global_array=0
+
+        final_dynamic_temp_object = {}
+
         for global_array_data in Global_Array_Of_Data:
             #### list out keys and values separately ####
             key_list = list(Global_Array_Of_Data[temp_count_of_global_array].keys())
             val_list = list(Global_Array_Of_Data[temp_count_of_global_array].values())
             # print key with val 100
             position = key_list.index(column_sheet)
+            
             #print(key_list[position])
-            temp_count_of_global_array=temp_count_of_global_array+1
             #### list out keys and values separately ####
             if(key_list[position]==column_sheet):
-                print(key_list[position])    
+                print(key_list[position])
+                final_dynamic_temp_object[key_list[position]]=data[columns[temp_count_of_global_array]].tolist()
 
+                Combined_Global_Array.append(final_dynamic_temp_object)    
+              
+            temp_count_of_global_array=temp_count_of_global_array+1  
     # Greater_Longitude_Combined = np.concatenate((Greater_Longitude))
     # Greater_Latitude_Combined = np.concatenate((Greater_Latitude))
     # Greater_Date_Combined = np.concatenate((Greater_Date))
     # Greater_NDVI_Combined = np.concatenate((Greater_NDVI))
     # Greater_Product_Combined = np.concatenate((Greater_Product))
+
+    #print("Combined Global Array of data ==> ",Combined_Global_Array)
+
+    counter = 0
+    print("Type is : "+str(type(Combined_Global_Array)))
+    for val in Combined_Global_Array:
+        print(val)
+        counter = counter + 1
+        if(counter == 2):
+            break
+
 
     # printing list data
     # print('Length of longitude Array is : ', len(Greater_Longitude_Combined))
