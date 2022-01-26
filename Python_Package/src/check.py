@@ -39,7 +39,16 @@ def main():
     #     temp = [key,value]
     #     dictlist.append(temp)
 
-    print(dictionary)
+    #print(dictionary)
+
+    # split dictionary into keys and values
+    NewListOfDict = []
+    items = dictionary.items()
+    for item in items:
+        NewListOfDict.append({item[0]:item[1]})
+  
+    # printing keys and values separately
+    print ("New List of Dictionary : ", NewListOfDict)
 
     # for i in dictionary:
     #     print(i)
