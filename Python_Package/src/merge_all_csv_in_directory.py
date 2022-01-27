@@ -221,32 +221,98 @@ def merge_all_csv_in_directory(path_="C:/"):
         NewListOfDict.append({item[0]:item[1]})
   
     # printing keys and values separately
-    print ("New List of Dictionary : ", NewListOfDict)
+    #print ("New List of Dictionary : ", NewListOfDict)
     ####################################################################Finally Writing Data
-    temp_final_count = 0
-    #This final dict will be wrote to the csv
-    #finalObjToBeWrote = {}
-    #for col_names in TempColumns:   
-    #    temp_count_of_NewList_Dict=0 
-    #    for combined_array in Combined_Global_Array:
-            #Getting the keys separate out of list of objects to check for the condition
-    #        key_list = list(NewListOfDict[temp_count_of_NewList_Dict].keys())
-    #        val_list = list(NewListOfDict[temp_count_of_NewList_Dict].values())
-            # print key with val 100
-    #        position = key_list.index(col_names)
-            # print(position)
-            # print(key_list[position])
+    # temp_final_count = 0
+    # #This final dict will be wrote to the csv
+    # finalObjToBeWrote = {}
+    # for col_names in TempColumns:   
+    #     temp_count_of_NewList_Dict=0 
+    #     for combined_array in Combined_Global_Array:
+    #         #Getting the keys separate out of list of objects to check for the condition
+    #         key_list = list(Combined_Global_Array[temp_count_of_NewList_Dict].keys())
+    #         val_list = list(Combined_Global_Array[temp_count_of_NewList_Dict].values())
+    #         # print key with val 100
+    #         position = key_list.index(col_names)
+    #         #print(position)
+    #         print(key_list[position])
+    #         #### list out keys and values separately ####
+    #         if(col_names == key_list[position]):
+    #             print(col_names)
+    #         #if(col_names == key_list[position]):
+    #         #     #print(combined_array)
+    #         #     finalObjToBeWrote[col_names] = "bilal"
+    #         temp_final_count = temp_final_count + 1
+
+
+
+    for column_sheet in TempColumns:
+        temp_count_of_global_array=0
+
+        final_dynamic_temp_object = {}
+
+        for global_array_data in NewListOfDict:
             #### list out keys and values separately ####
-            # if(key_list[position]==col_names):
-            #     print(col_names)
-            # if(col_names == key_list[position]):
-            #     #print(combined_array)
-            #     finalObjToBeWrote[col_names] = "bilal"
-    #    temp_final_count = temp_final_count + 1
+            #key_list = list(NewListOfDict[temp_count_of_global_array].keys())
+            #val_list = list(NewListOfDict[temp_count_of_global_array].values())
+            # print key with val 100
+            #position = key_list.index(column_sheet)
+            
+            #print(key_list[position])
+            #### list out keys and values separately ####
+            #if(key_list[position]==column_sheet):
+                pass
+                #print(key_list[position])
+                # final_dynamic_temp_object[key_list[position]]=data[columns[temp_count_of_global_array]].tolist()
+ 
+                # Combined_Global_Array.append(final_dynamic_temp_object)    
+              
+            #temp_count_of_global_array=temp_count_of_global_array+1  
     
     ####################################################################Finally Writing Data
 
-    #print(finalObjToBeWrote)
+    count = 0
+    for check in NewListOfDict:
+        print(check)
+        #print(count)
+        count = count + 1 
+    print(count)
+
+    #Getting the keys separate out of list of objects to check for the condition
+    finalObjToBeWrote = {}
+
+    for col_names in TempColumns:
+        finalObjToBeWrote[col_names]=[]
+    
+    # l = "longitude"
+    # key_list = list(NewListOfDict[0].keys())
+    # val_list = list(NewListOfDict[0].values())
+    # finalObjToBeWrote[key_list[0]] = val_list[0]
+    print(finalObjToBeWrote)
+
+    count = 0
+    for col_names in TempColumns:
+        temp_count_of_global_array=0
+
+        key_list = list(NewListOfDict[count].keys())
+        val_list = list(NewListOfDict[count].values())
+        count = count + 1
+        #print(key_list[0])
+        for list_new in NewListOfDict:
+            if(col_names==key_list[0]):
+                #print(key_list[0])
+                finalObjToBeWrote[key_list[0]]=val_list[0]
+                #print(col_names)
+                pass
+            temp_count_of_global_array = temp_count_of_global_array + 1
+            #print(finalObjToBeWrote)
+
+    # val_list = list(Combined_Global_Array[temp_count_of_NewList_Dict].values())
+    # print key with val 100
+    #position = key_list.index(col_names)
+    #print(position)
+    print(finalObjToBeWrote)
+
 
     # printing list data
     # print('Length of longitude Array is : ', len(Greater_Longitude_Combined))
@@ -276,7 +342,7 @@ def merge_all_csv_in_directory(path_="C:/"):
     #Will be tested later
     return
 
-def main():
+def main(): 
     path = 'H:/sir zeeshan work data science/test/0/'
     merge_all_csv_in_directory(path)
 
