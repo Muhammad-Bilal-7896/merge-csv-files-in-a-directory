@@ -1,6 +1,15 @@
 from ast import Global
 from turtle import pos
 
+#################################
+def merge_list_of_dictionaries(dict_list):
+  new_dict = {}
+  for d in dict_list:
+    for d_key in d:
+      if d_key not in new_dict:
+        new_dict[d_key] = []
+      new_dict[d_key].append(d[d_key])
+  return new_dict
 
 def merge_all_csv_in_directory(path_="C:/"):
     # All files and directories ending with .txt and that don't begin with a dot:
@@ -184,14 +193,60 @@ def merge_all_csv_in_directory(path_="C:/"):
 
     #print("Combined Global Array of data ==> ",Combined_Global_Array)
 
-    counter = 0
-    print("Type is : "+str(type(Combined_Global_Array)))
-    for val in Combined_Global_Array:
-        print(val)
-        counter = counter + 1
-        if(counter == 2):
-            break
+    # counter = 0
+    # print("Type is : "+str(type(Combined_Global_Array)))
+    # for val in Combined_Global_Array:
+    #     print(val)
+    #     counter = counter + 1
+    #     if(counter == 2):
+    #         break
+    
+    ####################################################################
+    #Merging Similar keys of dictionaries in same output from Combined Global Array object
+    #s = [{'Input.txt': 'Randy'}, {'Input.txt': 'Stan'}, {'Output.txt': 'Randy'}]
+    dictionary=merge_list_of_dictionaries(Combined_Global_Array)
+  
+    # dictlist=[]
 
+    # for key, value in dictionary.items():
+    #     temp = [key,value]
+    #     dictlist.append(temp)
+
+    #print(dictionary)
+
+    # split dictionary into keys and values
+    NewListOfDict = []
+    items = dictionary.items()
+    for item in items:
+        NewListOfDict.append({item[0]:item[1]})
+  
+    # printing keys and values separately
+    print ("New List of Dictionary : ", NewListOfDict)
+    ####################################################################Finally Writing Data
+    temp_final_count = 0
+    #This final dict will be wrote to the csv
+    #finalObjToBeWrote = {}
+    #for col_names in TempColumns:   
+    #    temp_count_of_NewList_Dict=0 
+    #    for combined_array in Combined_Global_Array:
+            #Getting the keys separate out of list of objects to check for the condition
+    #        key_list = list(NewListOfDict[temp_count_of_NewList_Dict].keys())
+    #        val_list = list(NewListOfDict[temp_count_of_NewList_Dict].values())
+            # print key with val 100
+    #        position = key_list.index(col_names)
+            # print(position)
+            # print(key_list[position])
+            #### list out keys and values separately ####
+            # if(key_list[position]==col_names):
+            #     print(col_names)
+            # if(col_names == key_list[position]):
+            #     #print(combined_array)
+            #     finalObjToBeWrote[col_names] = "bilal"
+    #    temp_final_count = temp_final_count + 1
+    
+    ####################################################################Finally Writing Data
+
+    #print(finalObjToBeWrote)
 
     # printing list data
     # print('Length of longitude Array is : ', len(Greater_Longitude_Combined))
