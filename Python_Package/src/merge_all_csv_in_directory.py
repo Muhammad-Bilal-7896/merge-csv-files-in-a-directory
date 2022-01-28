@@ -301,9 +301,10 @@ def merge_all_csv_in_directory(path_="C:/"):
         for list_new in NewListOfDict:
             if(col_names==key_list[0]):
                 #print(key_list[0])
-                finalObjToBeWrote[key_list[0]]=val_list[0]
+                arr = np.concatenate(val_list[0])
+                #print(arr) 
+                finalObjToBeWrote[key_list[0]] = arr
                 #print(col_names)
-                pass
             temp_count_of_global_array = temp_count_of_global_array + 1
             #print(finalObjToBeWrote)
 
@@ -311,7 +312,18 @@ def merge_all_csv_in_directory(path_="C:/"):
     # print key with val 100
     #position = key_list.index(col_names)
     #print(position)
-    print(finalObjToBeWrote)
+
+    #print(NewListOfDict)
+ 
+    merged_final_array = []
+    count = 0
+    for list_new in NewListOfDict:
+        print("==========================>")
+        key_list = list(NewListOfDict[count].keys())
+        val_list = list(NewListOfDict[count].values())
+        merge_them = np.concatenate(val_list[0])
+        print(merge_them)
+        count = count + 1
 
 
     # printing list data
