@@ -275,10 +275,10 @@ def merge_all_csv_in_directory(path_="C:/"):
 
     count = 0
     for check in NewListOfDict:
-        print(check)
+        #print(check)
         # print(count)
         count = count + 1
-    print(count)
+    #print(count)
 
     # Getting the keys separate out of list of objects to check for the condition
     finalObjToBeWrote = {}
@@ -290,7 +290,7 @@ def merge_all_csv_in_directory(path_="C:/"):
     # key_list = list(NewListOfDict[0].keys())
     # val_list = list(NewListOfDict[0].values())
     # finalObjToBeWrote[key_list[0]] = val_list[0]
-    print(finalObjToBeWrote)
+    #print(finalObjToBeWrote)
 
     count = 0
     for col_names in TempColumns:
@@ -331,43 +331,9 @@ def merge_all_csv_in_directory(path_="C:/"):
     print(merged_final_array)
 
     # Finally Writing data finally to csv file
-    df = pd.DataFrame(
-        # {
-        #     "longitude": Greater_Longitude_Combined,
-        #     "latitude": Greater_Latitude_Combined,
-        #     "date": Greater_Date_Combined,
-        #     "NDVI": Greater_NDVI_Combined,
-        #     "product": Greater_Product_Combined
-        # }
-        merged_final_array
-    )
+    df = pd.DataFrame(merged_final_array)
     df.to_csv("FinalMergedFile.csv", index=False)
 
-    # printing list data
-    # print('Length of longitude Array is : ', len(Greater_Longitude_Combined))
-    # print('Length of latitude Array is : ', len(Greater_Latitude_Combined))
-    # print('Length of date Array is :', len(Greater_Date_Combined))
-    # print('Length of NDVI Array is :', len(Greater_NDVI_Combined))
-    # print('Length of product Array is :', len(Greater_Product_Combined))
-
-    # Printing finally as arrays
-    # print('longitude Array is : ', Greater_Longitude_Combined)
-    # print('latitude Array is : ', Greater_Latitude_Combined)
-    # print('date Array is :', Greater_Date_Combined)
-    # print('NDVI Array is :', Greater_NDVI_Combined)
-    # print('product Array is :', Greater_Product_Combined)
-
-    # Writing data finally to csv file
-    # df = pd.DataFrame(
-    #     {
-    #         "longitude": Greater_Longitude_Combined,
-    #         "latitude": Greater_Latitude_Combined,
-    #         "date": Greater_Date_Combined,
-    #         "NDVI": Greater_NDVI_Combined,
-    #         "product": Greater_Product_Combined
-    #     }
-    # )
-    # df.to_csv("Test 0.csv", index=False)
     return
 
 
