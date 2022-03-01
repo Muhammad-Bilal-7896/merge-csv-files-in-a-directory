@@ -1,8 +1,4 @@
-from ast import Global
-from turtle import pos
-
 #################################
-
 
 def merge_list_of_dictionaries(dict_list):
     new_dict = {}
@@ -12,7 +8,6 @@ def merge_list_of_dictionaries(dict_list):
                 new_dict[d_key] = []
             new_dict[d_key].append(d[d_key])
     return new_dict
-
 
 def merge_all_csv_in_directory(path_="C:/"):
     # All files and directories ending with .txt and that don't begin with a dot:
@@ -74,7 +69,7 @@ def merge_all_csv_in_directory(path_="C:/"):
         data = pd.read_csv(path_ +
                            str(files))
 
-        # Reading Column Names
+        # Reading Column Names by reading the first row
         columns = list(data.head(0))
 
         # Focus here later
@@ -90,7 +85,7 @@ def merge_all_csv_in_directory(path_="C:/"):
 
         temp_count = 0
         for cols in TempColumns:
-            dynamic_temp_object[cols] = data[columns[temp_count]].tolist()
+            dynamic_temp_object["cols"] = "data[columns[temp_count]].tolist()"
             temp_count = temp_count + 1
             # print("Value ===> ",temp_count)
 
@@ -118,7 +113,7 @@ def merge_all_csv_in_directory(path_="C:/"):
 
         # Breaking the loop to avoid memory leak when the files length available in the folder or directory are reached.Discovered to avoid memory leak
         count = count + 1
-        if(count == 3):
+        if(count == length-1):
             break
     # The loop Ended Successfully.Done
 
@@ -210,88 +205,19 @@ def merge_all_csv_in_directory(path_="C:/"):
     #s = [{'Input.txt': 'Randy'}, {'Input.txt': 'Stan'}, {'Output.txt': 'Randy'}]
     dictionary = merge_list_of_dictionaries(Combined_Global_Array)
 
-    # dictlist=[]
-
-    # for key, value in dictionary.items():
-    #     temp = [key,value]
-    #     dictlist.append(temp)
-
-    # print(dictionary)
-
-    # split dictionary into keys and values
+    # split dictionary into keys and values and Append in NewListDict
     NewListOfDict = []
     items = dictionary.items()
     for item in items:
         NewListOfDict.append({item[0]: item[1]})
 
-    # printing keys and values separately
-    #print ("New List of Dictionary : ", NewListOfDict)
-    # Finally Writing Data
-    # temp_final_count = 0
-    # #This final dict will be wrote to the csv
-    # finalObjToBeWrote = {}
-    # for col_names in TempColumns:
-    #     temp_count_of_NewList_Dict=0
-    #     for combined_array in Combined_Global_Array:
-    #         #Getting the keys separate out of list of objects to check for the condition
-    #         key_list = list(Combined_Global_Array[temp_count_of_NewList_Dict].keys())
-    #         val_list = list(Combined_Global_Array[temp_count_of_NewList_Dict].values())
-    #         # print key with val 100
-    #         position = key_list.index(col_names)
-    #         #print(position)
-    #         print(key_list[position])
-    #         #### list out keys and values separately ####
-    #         if(col_names == key_list[position]):
-    #             print(col_names)
-    #         #if(col_names == key_list[position]):
-    #         #     #print(combined_array)
-    #         #     finalObjToBeWrote[col_names] = "bilal"
-    #         temp_final_count = temp_final_count + 1
-
-    for column_sheet in TempColumns:
-        temp_count_of_global_array = 0
-
-        final_dynamic_temp_object = {}
-
-        for global_array_data in NewListOfDict:
-            #### list out keys and values separately ####
-            #key_list = list(NewListOfDict[temp_count_of_global_array].keys())
-            #val_list = list(NewListOfDict[temp_count_of_global_array].values())
-            # print key with val 100
-            #position = key_list.index(column_sheet)
-
-            # print(key_list[position])
-            #### list out keys and values separately ####
-            # if(key_list[position]==column_sheet):
-            pass
-            # print(key_list[position])
-            # final_dynamic_temp_object[key_list[position]]=data[columns[temp_count_of_global_array]].tolist()
-
-            # Combined_Global_Array.append(final_dynamic_temp_object)
-
-            # temp_count_of_global_array=temp_count_of_global_array+1
-
-    # Finally Writing Data
-
-    count = 0
-    for check in NewListOfDict:
-        #print(check)
-        # print(count)
-        count = count + 1
-    #print(count)
-
     # Getting the keys separate out of list of objects to check for the condition
     finalObjToBeWrote = {}
-
+    #Initializing the finalObjToBeWrote with keys
     for col_names in TempColumns:
         finalObjToBeWrote[col_names] = []
 
-    # l = "longitude"
-    # key_list = list(NewListOfDict[0].keys())
-    # val_list = list(NewListOfDict[0].values())
-    # finalObjToBeWrote[key_list[0]] = val_list[0]
-    #print(finalObjToBeWrote)
-
+    #Appending the correct data i.e Arrays in finalObjToBeWrote dict
     count = 0
     for col_names in TempColumns:
         temp_count_of_global_array = 0
@@ -309,14 +235,10 @@ def merge_all_csv_in_directory(path_="C:/"):
                 # print(col_names)
             temp_count_of_global_array = temp_count_of_global_array + 1
             # print(finalObjToBeWrote)
-
-    # val_list = list(Combined_Global_Array[temp_count_of_NewList_Dict].values())
-    # print key with val 100
-    #position = key_list.index(col_names)
-    # print(position)
-
+    #Appending the correct data i.e Arrays in finalObjToBeWrote dict
     # print(NewListOfDict)
 
+    #Finally Concatenating the Seprate arrays into one and storing with respect to its keys
     merged_final_array = {}
     count = 0
     for list_new in NewListOfDict:
@@ -329,17 +251,16 @@ def merge_all_csv_in_directory(path_="C:/"):
         count = count + 1
 
     print(merged_final_array)
+    #Finally Concatenating the Seprate arrays into one and storing with respect to its keys
 
     # Finally Writing data finally to csv file
     df = pd.DataFrame(merged_final_array)
     df.to_csv("FinalMergedFile.csv", index=False)
-
+    # Finally Writing data finally to csv file
     return
-
 
 def main():
     path = 'H:/sir zeeshan work data science/test/0/'
     merge_all_csv_in_directory(path)
-
 
 main()
